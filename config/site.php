@@ -62,7 +62,7 @@ return [
     'membership_color' => '#000',
     'membership_bg_color' => '#ffc113',
 
-    'renderer' => [ // You will have to create your own renderer
+    'renderer' => [
         'url' => 'https://renderer.domain.com',
         'key' => 'secretkey',
         'default_filename' => '40oFb9RYEBLwvzPNse3Ajh623',
