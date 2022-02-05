@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-var currentCategory = 'hats';
+var currentCategory = '';
 var currentSearch = '';
 var itemTypesWithPadding = [];
 var itemTypePadding = '0px';
@@ -52,6 +52,8 @@ $(() => {
         if (currentCategory != oldCategory)
             search(currentCategory, 1, currentSearch);
     });
+    
+    search(currentCategory, 1, currentSearch);
 });
 
 function search(category, page, search)
