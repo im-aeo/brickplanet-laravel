@@ -53,7 +53,7 @@ $(() => {
             search(currentCategory, 1, currentSearch);
     });
     
-    search(currentCategory, 1, currentSearch);
+    search('hats', 1, currentSearch);
 });
 
 function search(category, page, search)
