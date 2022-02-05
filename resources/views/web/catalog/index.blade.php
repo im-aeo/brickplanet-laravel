@@ -32,7 +32,7 @@ SOFTWARE.
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/catalog.js?v=7') }}"></script>
+    <script src="{{ asset('js/catalog.js?v=8') }}"></script>
 @endsection
 
 @section('content')
@@ -61,7 +61,7 @@ SOFTWARE.
             <ul class="nav nav-pills nav-justified flex-column flex-sm-row" role="tablist">
                 @foreach (config('site.catalog_item_types') as $type)
                     <li class="nav-item">
-                        <span class="nav-link flex-sm-fill @if ($type == 'recent') active @endif" data-category="{{ lcfirst(itemType($type, true)) }}">{{ itemType($type, true) }}</span>
+                        <span class="nav-link flex-sm-fill @if ($type == 'hat') active @endif" data-category="{{ lcfirst(itemType($type, true)) }}">{{ itemType($type, true) }}</span>
                     </li>
                 @endforeach
             </ul>
