@@ -79,6 +79,7 @@ return [
         'key'
     ],
 
+    'catalog_recent_item_types' => ['hat', 'face', 'gadget'],
     'catalog_item_types' => ['hat', 'face', 'gadget', 'shirt', 'pants'],
     'inventory_item_types' => ['hat', 'face', 'gadget', 'shirt', 'pants'],
     'character_editor_item_types' => ['hat', 'face', 'gadget', 'shirt', 'pants'],
