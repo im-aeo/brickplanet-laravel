@@ -23,13 +23,13 @@ SOFTWARE.
 -->
 
 @extends('layouts.default', [
-    'title' => 'Spaces'
+    'title' => 'Groups'
 ])
 
 @section('content')
     <div class="row mb-1">
         <div class="col">
-            <h3>Spaces</h3>
+            <h3>Groups</h3>
         </div>
         <div class="col text-right">
             <a href="{{ route('creator_area.index', ['t' => 'group']) }}" class="btn btn-success"><i class="fas fa-plus"></i> Create</a>
@@ -37,7 +37,7 @@ SOFTWARE.
     </div>
     <form action="{{ route('groups.index') }}" method="GET">
         <div class="input-group mb-3">
-            <input class="form-control" type="text" name="search" placeholder="Search for spaces..." value="{{ request()->search }}">
+            <input class="form-control" type="text" name="search" placeholder="Search for groups..." value="{{ request()->search }}">
             <div class="input-group-append">
                 <button class="btn btn-success" type="submit">
                     <i class="fas fa-search"></i>
@@ -58,7 +58,7 @@ SOFTWARE.
                     <div class="col-8 col-md-8 align-self-center">
                         <h5 class="text-truncate"><a href="{{ route('groups.view', [$group->id, $group->slug()]) }}" style="color:inherit;font-weight:600;">{{ $group->name }}</a></h5>
                         <div class="text-muted show-sm-only" style="margin-top:-5px;">{{ number_format($group->members()->count()) }} Members</div>
-                        <div style="max-height:125px;overflow:hidden;">{{ $group->description ?? 'This space does not have a description.' }}</div>
+                        <div style="max-height:125px;overflow:hidden;">{{ $group->description ?? 'This group does not have a description.' }}</div>
                     </div>
                     <div class="col-md-2 text-center align-self-center hide-sm" style="font-weight:600;">
                         <h3>{{ number_format($group->member_count) }}</h3>
@@ -68,7 +68,7 @@ SOFTWARE.
             </div>
         </div>
     @empty
-        <p>No spaces found.</p>
+        <p>No groups found.</p>
     @endforelse
     {{ $groups->onEachSide(1) }}
 @endsection

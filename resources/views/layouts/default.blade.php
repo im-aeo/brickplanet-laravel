@@ -155,7 +155,7 @@ SOFTWARE.
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav mr-auto" style="width:50%;">
                 <span><i class="fas fa-search"></i></span>
-                <input class="navbar-search" id="navbarSearch" placeholder="Search for users, items and spaces...">
+                <input class="navbar-search" id="navbarSearch" placeholder="Search for users, items and groups...">
             </ul>
 
             <ul class="navbar-nav ml-auto">
@@ -257,7 +257,7 @@ SOFTWARE.
         </a>
         <a href="{{ route('catalog.index') }}">
             <i class="fas fa-store sidebar-icon"></i>
-            <span class="sidebar-text">Market</span>
+            <span class="sidebar-text">Catalog</span>
         </a>
 
         @if (site_setting('forum_enabled'))
@@ -269,8 +269,8 @@ SOFTWARE.
 
         @if (site_setting('groups_enabled'))
             <a href="{{ route('groups.index') }}">
-                <i class="fas fa-planet-ringed sidebar-icon"></i>
-                <span class="sidebar-text">Spaces</span>
+                <i class="fas fa-building sidebar-icon"></i>
+                <span class="sidebar-text">Groups</span>
             </a>
         @endif
 

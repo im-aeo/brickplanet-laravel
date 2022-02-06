@@ -142,7 +142,7 @@ Route::group(['as' => 'report.', 'prefix' => 'report', 'middleware' => 'auth'], 
     Route::post('/submit', 'ReportController@submit')->name('submit');
 });
 
-Route::group(['as' => 'catalog.', 'prefix' => 'market'], function() {
+Route::group(['as' => 'catalog.', 'prefix' => 'catalog'], function() {
     Route::get('/', 'CatalogController@index')->name('index');
     Route::get('/{id}/{slug}', 'CatalogController@item')->name('item');
     Route::get('/{id}/{slug}/edit', 'CatalogController@edit')->name('edit')->middleware('auth');
@@ -177,11 +177,11 @@ Route::group(['as' => 'users.'], function() {
     Route::group(['prefix' => 'profile/{username}'], function() {
         Route::get('/', 'UsersController@profile')->name('profile');
         Route::get('/friends', 'UsersController@friends')->name('friends');
-        Route::get('/spaces', 'UsersController@groups')->name('groups');
+        Route::get('/groups', 'UsersController@groups')->name('groups');
     });
 });
 
-Route::group(['as' => 'groups.', 'prefix' => 'spaces'], function() {
+Route::group(['as' => 'groups.', 'prefix' => 'groups'], function() {
     Route::get('/', 'GroupsController@index')->name('index');
     Route::get('/{id}/{slug}', 'GroupsController@view')->name('view');
     Route::get('/{id}/{slug}/manage', 'GroupsController@manage')->name('manage')->middleware('auth');

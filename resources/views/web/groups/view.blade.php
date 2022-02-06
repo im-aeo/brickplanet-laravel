@@ -143,7 +143,7 @@ SOFTWARE.
                     <div class="card">
                         <div class="card-body">
                             <div style="max-height:300px;overflow-y:auto;">
-                                {!! (!empty($group->description)) ? nl2br(e($group->description)) : '<div class="text-muted">This space does not have a description.</div>' !!}
+                                {!! (!empty($group->description)) ? nl2br(e($group->description)) : '<div class="text-muted">This group does not have a description.</div>' !!}
                             </div>
                         </div>
                     </div>

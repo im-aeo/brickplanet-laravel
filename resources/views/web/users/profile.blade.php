@@ -213,7 +213,7 @@ SOFTWARE.
         <div class="col-md-6">
             <div class="row">
                 <div class="col">
-                    <h3>Spaces</h3>
+                    <h3>Groups</h3>
                 </div>
                 <div class="col text-right">
                     <a href="{{ route('users.groups', $user->username) }}" class="btn btn-sm btn-success">View All</a>
@@ -234,7 +234,7 @@ SOFTWARE.
                         @empty
                             <div class="col text-center">
                                 <i class="fas fa-frown text-warning mb-2" style="font-size:50px;"></i>
-                                <div>This user is not in any spaces.</div>
+                                <div>This user is not in any groups.</div>
                             </div>
                         @endforelse
                     </div>

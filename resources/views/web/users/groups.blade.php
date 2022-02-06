@@ -23,11 +23,11 @@ SOFTWARE.
 -->
 
 @extends('layouts.default', [
-    'title' => "{$user->username}'s Spaces"
+    'title' => "{$user->username}'s Groups"
 ])
 
 @section('content')
-    <h3>{{ $user->username }}'s Spaces</h3>
+    <h3>{{ $user->username }}'s Groups</h3>
     <div class="card">
         <div class="card-body" @if ($groups->count() > 0) style="padding-bottom:0;" @endif>
             <div class="row">
@@ -43,7 +43,7 @@ SOFTWARE.
                 @empty
                     <div class="col text-center">
                         <i class="fas fa-frown text-warning mb-2" style="font-size:50px;"></i>
-                        <div>This user is not in any spaces.</div>
+                        <div>This user is not in any groups.</div>
                     </div>
                 @endforelse
             </div>

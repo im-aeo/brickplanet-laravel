@@ -23,7 +23,7 @@ SOFTWARE.
 -->
 
 @extends('layouts.default', [
-    'title' => 'Market'
+    'title' => 'Catalog'
 ])
 
 @section('meta')
@@ -32,13 +32,13 @@ SOFTWARE.
 @endsection
 
 @section('js')
-    <script src="{{ asset('js/catalog.js?v=8') }}"></script>
+    <script src="{{ asset('js/catalog.js?v=9') }}"></script>
 @endsection
 
 @section('content')
     <div class="row mb-3">
         <div class="col-7">
-            <h3>Market</h3>
+            <h3>Catalog</h3>
         </div>
         <div class="col-5 text-right">
             <a href="{{ route('creator_area.index') }}" class="btn btn-success"><i class="fas fa-plus"></i> Create</a>

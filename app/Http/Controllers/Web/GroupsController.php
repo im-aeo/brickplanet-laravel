@@ -152,7 +152,7 @@ class GroupsController extends Controller
 
         }
 
-        return back()->with('success_message', 'Space has been updated.');
+        return back()->with('success_message', 'Group has been updated.');
     }
 
     public function updateJoinRequest(Request $request)
@@ -185,13 +185,13 @@ class GroupsController extends Controller
     {
         $group = Group::where('id', '=', $request->id)->firstOrFail();
         $isInGroup = Auth::user()->isInGroup($group->id);
-        $message = (!$isInGroup) ? 'You have joined this space.' : 'You have left this space.';
+        $message = (!$isInGroup) ? 'You have joined this group.' : 'You have left this group.';
 
         if (Auth::user()->id == $group->owner->id) abort(404);
 
         if (!$isInGroup) {
             if (Auth::user()->reachedGroupLimit())
-                return back()->withErrors(['You have reached the limit of spaces you can be apart of.']);
+                return back()->withErrors(['You have reached the limit of groups you can be apart of.']);
 
             if ($group->is_private) {
                 $groupJoinRequest = new GroupJoinRequest;
@@ -234,15 +234,15 @@ class GroupsController extends Controller
             $user->primary_group_id = null;
             $user->save();
 
-            return back()->with('success_message', 'This is no longer your primary space.');
+            return back()->with('success_message', 'This is no longer your primary group.');
         }
 
         if (!$isInGroup)
-            return back()->withErrors(['You are not a member of this space.']);
+            return back()->withErrors(['You are not a member of this group.']);
 
         $user->primary_group_id = $group->id;
         $user->save();
 
-        return back()->with('success_message', 'This is now your primary space.');
+        return back()->with('success_message', 'This is now your primary group.');
     }
 }
