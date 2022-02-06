@@ -38,8 +38,12 @@ class PromocodesController extends Controller
         $codes = config('promocodes');
         $items = [];
 
-        foreach ($codes as $code => $id)
-            $items[] = Item::where('id', '=', $id)->first();
+        foreach ($codes as $code => $id) {
+            $item = Item::where('id', '=', $id);
+            
+            if ($item->exists())
+                $items[] = $item->first();
+        }
 
         return view('web.account.promocodes')->with([
             'items' => $items
