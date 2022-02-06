@@ -216,7 +216,8 @@ SOFTWARE.
         </div>
 
         <footer class="container text-center mb-5 mt-5">
-            <div><strong>Copyright &copy; {{ config('site.name') }} {{ date('Y') }}</strong>.</div>
+            <div><strong>Copyright &copy; {{ config('site.name') }} {{ date('Y') }}</strong></div>
+            <div class="text-muted" style="font-size:13px;"><strong>Powered by <a href="https://github.com/FoxxoSnoot/laravel-roblox-clone" target="_blank">Laravel Roblox Clone</a></strong></div>
         </footer>
     @endif
 
