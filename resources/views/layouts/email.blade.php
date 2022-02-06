@@ -66,12 +66,17 @@ SOFTWARE.
 
         .footer {
             margin-top: 25px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
         .footer .sender {
             opacity: .8;
-            margin-bottom: 10px;
+        }
+        
+        .footer .powered-by {
+            font-size: 13px;
+            opacity: .6;
         }
     </style>
 </head>
@@ -82,6 +87,7 @@ SOFTWARE.
     </div>
     <div class="footer">
         <div class="sender">&mdash; Team {{ config('site.name') }}</div>
+        <div class="powered-by">Powered by <a href="https://github.com/FoxxoSnoot/laravel-roblox-clone" target="_blank">Laravel Roblox Clone</a></div>
     </div>
 </body>
 </html>
