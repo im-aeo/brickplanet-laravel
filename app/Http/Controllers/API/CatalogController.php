@@ -55,7 +55,7 @@ class CatalogController extends Controller
         if ($items->count() == 0)
             return response()->json(['error' => $error]);
 
-        $items = $items->orderBy('updated_at', 'DESC')->paginate(12);
+        $items = $items->orderBy('updated_at', 'DESC')->paginate(8);
 
         foreach ($items as $item)
             $json[] = [
