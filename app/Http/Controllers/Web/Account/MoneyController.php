@@ -36,9 +36,6 @@ class MoneyController extends Controller
     {
         switch ($request->category) {
             case '':
-            case 'general':
-                $category = 'general';
-                break;
             case 'purchases':
                 $category = 'purchases';
                 $transactions = ItemPurchase::where('buyer_id', '=', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(10);
