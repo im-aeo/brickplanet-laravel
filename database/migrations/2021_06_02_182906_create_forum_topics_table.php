@@ -38,6 +38,8 @@ class CreateForumTopicsTable extends Migration
      */
     public function up()
     {
+        $site = config('site.name');
+        
         Schema::create('forum_topics', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -59,8 +61,8 @@ class CreateForumTopicsTable extends Migration
                 'updated_at' => Carbon::now()->toDateTimeString()
             ],
             [
-                'name' => 'Avasquare Central',
-                'description' => 'This is the general discussion for Avasquare. You should post topics relating to Avasquare here.',
+                'name' => "{$site} Discussion",
+                'description' => "This is the general discussion for {$site}. You should post topics relating to {$site} here.",
                 'home_page_priority' => 100,
                 'is_staff_only_viewing' => false,
                 'is_staff_only_posting' => false,
@@ -96,7 +98,7 @@ class CreateForumTopicsTable extends Migration
             ],
             [
                 'name' => 'Website Suggestions',
-                'description' => 'Do you have an idea for Avasquare? Post your suggestions here.',
+                'description' => "Do you have an idea for {$site}? Post your suggestions here.",
                 'home_page_priority' => 60,
                 'is_staff_only_viewing' => false,
                 'is_staff_only_posting' => false,
