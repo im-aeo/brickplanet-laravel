@@ -54,7 +54,7 @@ SOFTWARE.
                         @foreach ($fields as $name => $value)
                             <div class="col-md-2"><strong>{{ $name }}</strong></div>
                             <div class="col-md-10">
-                                <div style="max-height:220px;overflow-y:auto;">{!! (!in_array($name, ['Creator', 'Owner'])) ? nl2br(e($value)) : $value !!}</div>
+                                <div style="max-height:220px;overflow-y:auto;">{!! (!in_array($name, ['Creator', 'Owner', 'Sender'])) ? nl2br(e($value)) : $value !!}</div>
                             </div>
                         @endforeach
                     </div>
