@@ -24,7 +24,7 @@
  */
 
 return [
-    'name' => env('APP_NAME', 'Roblox Clone'),
+    'name' => env('APP_NAME', 'Laravel Roblox Clone'),
     'logo' => '/img/logo.png',
     'icon' => '/img/icon.png',
 
@@ -39,7 +39,7 @@ return [
     'storage_url' => 'http://cdn.domain.com',
     'referral_url' => 'https://refer.domain.com',
 
-    'official_thumbnail' => '/img/icon.png',
+    'official_thumbnail' => '/img/icon.png', // Headshot for the system account (ID 1)
 
     'updates_forum_topic_id' => 1,
 
@@ -56,7 +56,7 @@ return [
     'donator_item_id' => 0,
     'membership_item_id' => 0,
     'email_verification_item_id' => 0,
-    'fake_admin_item_id' => 0,
+    'fake_admin_item_id' => 0, // Granted to those who visit "/admin", leave as 0 if none
 
     'membership_name' => 'Gold',
     'membership_color' => '#000',
@@ -65,7 +65,7 @@ return [
     'renderer' => [
         'url' => 'https://renderer.domain.com',
         'key' => 'secretkey',
-        'default_filename' => '40oFb9RYEBLwvzPNse3Ajh623',
+        'default_filename' => 'user', // Default thumbnail filename
         'previews_enabled' => true
     ],
 
@@ -74,7 +74,7 @@ return [
         'twitter' => ''
     ],
 
-    'admin_panel_code' => '',
+    'admin_panel_code' => '', // A second layer of protection to the administration panel required to login, leave empty if you do not want one
     'maintenance_passwords' => [
         'key'
     ],
@@ -83,5 +83,5 @@ return [
     'catalog_item_types' => ['hat', 'face', 'gadget', 'shirt', 'pants'],
     'inventory_item_types' => ['hat', 'face', 'gadget', 'shirt', 'pants'],
     'character_editor_item_types' => ['hat', 'face', 'gadget', 'shirt', 'pants'],
-    'item_thumbnails_with_padding' => ['hat', 'face', 'gadget', 'tshirt', 'shirt', 'pants']
+    'item_thumbnails_with_padding' => ['hat', 'face', 'gadget', 'shirt', 'pants']
 ];

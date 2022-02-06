@@ -33,9 +33,7 @@ SOFTWARE.
 @endsection
 
 @section('content')
-    @if (!$isGroup)
-        <div class="alert bg-warning">There currently is a small issue with UV mapping on the side of arms. Do not worry as this will be fixed in the future and all your shirts will be re-rendered.</div>
-    @else
+    @if ($isGroup)
         @if (Auth::user()->reachedGroupLimit())
             <div class="alert bg-danger text-white">You have reached the limit of groups you can be apart of.</div>
         @endif

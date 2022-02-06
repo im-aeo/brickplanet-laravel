@@ -23,19 +23,19 @@
  */
 
 :root {
-    --brand_color: #4d94ff;
-    --brand_color_darkened: #437fd8;
+    --brand_color: #f35045;
+    --brand_color_darkened: #c23e34;
     --font_family: 'Source Sans Pro', sans-serif;
     --divider_color: #2c2f35;
 
     --body_bg: #1a1c20;
     --body_color: #fff;
-    --link_color: #4d94ff;
-    --link_color_hover: #437fd8;
+    --link_color: #007bff;
+    --link_color_hover: #0056b3;
 
-    --currency_icon_normal: url('/img/currency_new.png');
-    --currency_icon_light: url('/img/currency_new_white.png');
-    --currency_icon_navbar: url('/img/currency_new.png');
+    --currency_icon_normal: url('/img/currency.png');
+    --currency_icon_light: url('/img/currency_light.png');
+    --currency_icon_navbar: url('/img/currency.png');
 
     --headshot_bg: #454b57;
 
@@ -52,7 +52,7 @@
     --sidebar_title_color: #bdbdbd;
     --sidebar_title_border_color: #999999;
     --sidebar_link_color: #dad8d8;
-    --sidebar_notification_bg: #4d94ff;
+    --sidebar_notification_bg: #f35045;
     --sidebar_notification_color: #fff;
 
     --section_bg: #22252b;

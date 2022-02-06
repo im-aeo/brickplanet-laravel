@@ -49,19 +49,6 @@ class ForumController extends Controller
         ]);
     }
 
-    public function leaderboard()
-    {
-        $users = User::where('id', '>', 1)
-            ->join('forum_threads', 'forum_threads.creator_id', '=', 'users.id')
-            ->join('forum_replies', 'forum_replies.creator_id', '=', 'users.id')
-            ->select('users.*', DB::raw('(COUNT(forum_replies.id) + COUNT(forum_threads.id)) AS post_count'))
-            ->orderBy('post_count', 'DESC')->get();
-
-        return view('web.forum.leaderboard')->with([
-            'users' => $users
-        ]);
-    }
-
     public function search(Request $request)
     {
         $search = (isset($request->search)) ? trim($request->search) : '';

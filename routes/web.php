@@ -154,7 +154,6 @@ Route::group(['as' => 'catalog.', 'prefix' => 'market'], function() {
 
 Route::group(['as' => 'forum.', 'prefix' => 'forum'], function() {
     Route::get('/', 'ForumController@index')->name('index');
-    Route::get('/leaderboard', 'ForumController@leaderboard')->name('leaderboard')->middleware('auth');
     Route::get('/search', 'ForumController@search')->name('search')->middleware('auth');
     Route::get('/topic/{id}/{slug}', 'ForumController@topic')->name('topic');
     Route::get('/thread/{id}', 'ForumController@thread')->name('thread');
