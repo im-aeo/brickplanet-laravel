@@ -171,7 +171,8 @@ Route::group(['as' => 'creator_area.', 'prefix' => 'create', 'middleware' => 'au
 
 Route::group(['as' => 'users.'], function() {
     Route::group(['prefix' => 'users'], function() {
-        Route::get('/search', 'UsersController@index')->name('index');
+        Route::get('/search/{category}', 'UsersController@index')->name('index');
+        Route::get('/search', 'UsersController@index');
     });
 
     Route::group(['prefix' => 'profile/{username}'], function() {

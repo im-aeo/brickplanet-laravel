@@ -25,6 +25,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Group;
 use App\Models\Friend;
@@ -39,17 +40,34 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $search = (isset($request->search)) ? trim($request->search) : '';
+        $button = [];
+        $where = [
+            ['username', 'LIKE', "%{$search}%"]
+        ];
 
-        if (Str::startsWith($search, '%'))
-            $search = '';
+        switch ($request->category) {
+            case '':
+            case 'all':
+                $category = 'all';
+                $button['text'] = 'Online';
+                $button['category'] = 'online';
+                break;
+            case 'online':
+                $where[] = ['updated_at', '>=', Carbon::now()->subMinutes(3)];
+                $category = 'online';
+                $button['text'] = 'All';
+                $button['category'] = 'all';
+                break;
+            default:
+                abort(404);
+        }
 
-        $users = User::where('username', 'LIKE', "%{$search}%")->orderBy('updated_at', 'DESC')->paginate(12);
-        $total = User::all()->count();
+        $users = User::where($where)->orderBy('created_at', 'ASC')->paginate(25);
 
         return view('web.users.index')->with([
-            'search' => $search,
-            'users' => $users,
-            'total' => $total
+            'category' => $category,
+            'button' => $button,
+            'users' => $users
         ]);
     }
 

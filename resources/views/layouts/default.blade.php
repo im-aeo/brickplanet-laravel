@@ -223,7 +223,7 @@ SOFTWARE.
         <div class="mb-2"></div>
         <div class="mt-2 show-sm-only"></div>
         <div class="show-sm-only" style="padding-left: 5px; padding-right: 5px;">
-            <form action="{{ route('users.index') }}" method="GET">
+            <form action="{{ route('users.index', '') }}" method="GET">
                 <input class="form-control" style="height: 38px;" type="text" name="search" placeholder="Search Avasquare..." @if (request()->route()->getName() == 'users.index') value="{{ request()->search }}" @endif>
             </form>
         </div>
@@ -274,7 +274,7 @@ SOFTWARE.
             </a>
         @endif
 
-        <a href="{{ route('users.index') }}">
+        <a href="{{ route('users.index', '') }}">
             <i class="fas fa-telescope sidebar-icon"></i>
             <span class="sidebar-text">Search</span>
         </a>
