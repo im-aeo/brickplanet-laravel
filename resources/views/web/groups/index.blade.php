@@ -26,50 +26,6 @@ SOFTWARE.
     'title' => 'Spaces'
 ])
 
-@section('css')
-    <style>
-        .group {
-            position: relative;
-            margin-top: 50px;
-        }
-
-        img.group-icon {
-            background: var(--headshot_bg);
-            border-radius: 50%;
-            width: 96px;
-            height: 96px;
-            margin: 0 auto;
-            top: -55px;
-            left: 0;
-            right: 0;
-            z-index: 1;
-            position: absolute;
-            display: block;
-        }
-
-        .group-name {
-            font-size: 18px;
-            margin-top: 31px;
-        }
-
-        .group-name a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .group-member-count {
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-
-        .group-description {
-            font-size: 13px;
-            height: 55px;
-            overflow: hidden;
-        }
-    </style>
-@endsection
-
 @section('content')
     <div class="row mb-1">
         <div class="col">
@@ -80,7 +36,7 @@ SOFTWARE.
         </div>
     </div>
     <form action="{{ route('groups.index') }}" method="GET">
-        <div class="input-group">
+        <div class="input-group mb-3">
             <input class="form-control" type="text" name="search" placeholder="Search for spaces..." value="{{ request()->search }}">
             <div class="input-group-append">
                 <button class="btn btn-success" type="submit">
@@ -90,27 +46,29 @@ SOFTWARE.
             </div>
         </div>
     </form>
-    <div class="row" style="margin-top:30px;">
-        @forelse ($groups as $group)
-            <div class="col-md-4 text-center">
-                <div class="group">
-                    <a href="{{ route('groups.view', [$group->id, $group->slug()]) }}">
-                        <img class="group-icon" src="{{ $group->thumbnail() }}">
-                    </a>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="group-name text-truncate">
-                                <a href="{{ route('groups.view', [$group->id, $group->slug()]) }}">{{ $group->name }}</a>
-                            </div>
-                            <div class="group-member-count">{{ number_format($group->member_count) }} Members</div>
-                            <div class="group-description">{{ $group->description ?? 'This space does not have a description.' }}</div>
-                        </div>
+    @forelse ($groups as $group)
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4 col-md-2">
+                        <a href="{{ route('groups.view', [$group->id, $group->slug()]) }}">
+                            <img src="{{ $group->thumbnail() }}" style="background:var(--section_bg_inside);border-radius:6px;">
+                        </a>
+                    </div>
+                    <div class="col-8 col-md-8 align-self-center">
+                        <h5 class="text-truncate"><a href="{{ route('groups.view', [$group->id, $group->slug()]) }}" style="color:inherit;font-weight:600;">{{ $group->name }}</a></h5>
+                        <div class="text-muted show-sm-only" style="margin-top:-5px;">{{ number_format($group->members()->count()) }} Members</div>
+                        <div style="max-height:125px;overflow:hidden;">{{ $group->description ?? 'This space does not have a description.' }}</div>
+                    </div>
+                    <div class="col-md-2 text-center align-self-center hide-sm" style="font-weight:600;">
+                        <h3>{{ number_format($group->member_count) }}</h3>
+                        <h4 class="text-muted" style="margin-top:-10px;margin-bottom:0;">MEMBERS</h4>
                     </div>
                 </div>
             </div>
-        @empty
-            <div class="col">No spaces found.</div>
-        @endforelse
-    </div>
+        </div>
+    @empty
+        <p>No spaces found.</p>
+    @endforelse
     {{ $groups->onEachSide(1) }}
 @endsection
