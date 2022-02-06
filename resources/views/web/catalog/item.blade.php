@@ -32,11 +32,6 @@ SOFTWARE.
         name="item-info"
         data-id="{{ $item->id }}"
 
-        @if ($item->has3dView())
-            data-model="{{ config('site.storage_url') }}/uploads/{{ $item->filename }}.obj"
-            data-texture="{{ config('site.storage_url') }}/uploads/{{ $item->filename }}.png"
-        @endif
-
         @if ($item->isTimed())
             data-onsale-until="{{ $item->onsale_until->format('Y-m-d H:i') }}"
         @endif
