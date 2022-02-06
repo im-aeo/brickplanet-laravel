@@ -392,7 +392,8 @@ SOFTWARE.
             <a href="{{ route('info.index', 'team') }}" class="text-muted" style="text-decoration:none;">TEAM</a>
         </div>
 
-        <div><strong>Copyright &copy; {{ config('site.name') }} {{ date('Y') }}</strong>.</div>
+        <div><strong>Copyright &copy; {{ config('site.name') }} {{ date('Y') }}</strong></div>
+        <div class="text-muted" style="font-size:13px;"><strong>Powered by <a href="https://github.com/FoxxoSnoot/laravel-roblox-clone" target="_blank">Laravel Roblox Clone</a></strong></div>
 
         @if (config('site.socials.discord') || config('site.socials.twitter'))
             <div class="mt-2">
