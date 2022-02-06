@@ -38,7 +38,7 @@ class FriendsController extends Controller
         $friendRequests = Friend::where([
             ['receiver_id', '=', Auth::user()->id],
             ['is_pending', '=', true]
-        ])->paginate(16);
+        ])->paginate(24);
 
         return view('web.account.friends')->with([
             'friendRequests' => $friendRequests

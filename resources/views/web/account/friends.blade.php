@@ -32,7 +32,7 @@ SOFTWARE.
         <div class="card-body" @if ($friendRequests->count() > 0) style="padding-bottom:0;" @endif>
             <div class="row">
                 @forelse ($friendRequests as $friendRequest)
-                    <div class="col-6 col-md-3 text-center">
+                    <div class="col-6 col-md-2 text-center">
                         <div class="card" style="border:none;">
                             <a href="{{ route('users.profile', $friendRequest->sender->username) }}">
                                 <img src="{{ $friendRequest->sender->thumbnail() }}">
