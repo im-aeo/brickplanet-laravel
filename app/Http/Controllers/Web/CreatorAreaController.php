@@ -44,7 +44,7 @@ class CreatorAreaController extends Controller
     {
         $isGroup = $request->has('t') && $request->t == 'group';
         $price = config('site.group_creation_price');
-        $title = (!$isGroup) ? 'Create Item' : 'Create Space';
+        $title = (!$isGroup) ? 'Create Item' : 'Create Group';
 
         if ($request->has('gid')) {
             $group = Group::where([
@@ -68,7 +68,7 @@ class CreatorAreaController extends Controller
         $isGroup = $request->has('is_group');
         $price = config('site.group_creation_price');
         $filename = Str::random(50);
-        $dimensions = (!$isGroup && $request->type != 'tshirt') ? 'dimensions:min_width=1024,max_height=1024,min_height=1024,max_height=1024' : 'dimensions:min_width=100,min_height=100';
+        $dimensions = (!$isGroup) ? 'dimensions:min_width=1024,max_height=1024,min_height=1024,max_height=1024' : 'dimensions:min_width=100,min_height=100';
         $validate = [
             'name' => ['required', 'min:3', 'max:70', 'regex:/^[a-z0-9 .\-!,\':;<>?()\[\]+=\/]+$/i'],
             'description' => ['max:1024'],
@@ -88,7 +88,7 @@ class CreatorAreaController extends Controller
             ]);
 
             if (Auth::user()->currency < $price)
-                return back()->withErrors(["You need at least {$price} currency to create a space."]);
+                return back()->withErrors(["You need at least {$price} currency to create a group."]);
 
             if (Auth::user()->reachedGroupLimit())
                 return back()->withErrors(['You have reached the limit of groups you can be apart of.']);
@@ -132,9 +132,9 @@ class CreatorAreaController extends Controller
 
             Storage::put("thumbnails/{$filename}.png", Image::make($logo)->encode('png'));
 
-            return redirect()->route('groups.view', [$group->id, $group->slug()])->with('success_message', 'Space has been created.');
+            return redirect()->route('groups.view', [$group->id, $group->slug()])->with('success_message', 'Group has been created.');
         } else {
-            if (!in_array($request->type, ['tshirt', 'shirt', 'pants'])) abort(404);
+            if (!in_array($request->type, ['shirt', 'pants'])) abort(404);
 
             if ($request->has('group_id')) {
                 $group = Group::where([
@@ -189,23 +189,7 @@ class CreatorAreaController extends Controller
                 $inventory->item_id = $item->id;
                 $inventory->save();
             } else {
-                if ($item->type != 'tshirt') {
-                    Storage::putFileAs('uploads', $request->file('template'), "{$filename}.png");
-                } else {
-                    $tshirt = imagecreatefromstring($request->file('template')->get());
-                    $img = imagecreatetruecolor(420, 420);
-
-                    imagealphablending($img, false);
-                    imagesavealpha($img, true);
-                    imagefilledrectangle($img, 0, 0, 420, 420, imagecolorallocatealpha($img, 255, 255, 255, 127));
-                    imagecopyresampled($img, $tshirt, 0, 0, 0, 0, 420, 420, imagesx($tshirt), imagesy($tshirt));
-
-                    $tshirt = $img;
-                    imagealphablending($tshirt, false);
-                    imagesavealpha($tshirt, true);
-
-                    Storage::put("uploads/{$filename}.png", Image::make($tshirt)->encode('png'));
-                }
+                Storage::putFileAs('uploads', $request->file('template'), "{$filename}.png");
             }
 
             return redirect()->route('catalog.item', [$item->id, $item->slug()])->with('success_message', 'Item has been created and is currently awaiting approval.');
