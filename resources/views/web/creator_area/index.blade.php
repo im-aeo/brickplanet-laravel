@@ -49,9 +49,9 @@ SOFTWARE.
                         @if ($isGroup)
                             <input type="hidden" name="is_group" value="true">
                             <label for="name">Name</label>
-                            <input class="form-control mb-2" type="text" name="name" placeholder="Space Name" required>
+                            <input class="form-control mb-2" type="text" name="name" placeholder="Group Name" required>
                             <label for="description">Description</label>
-                            <textarea class="form-control mb-2" name="description" placeholder="Space Description" rows="5"></textarea>
+                            <textarea class="form-control mb-2" name="description" placeholder="Group Description" rows="5"></textarea>
                             <label for="template">Logo</label><br>
                             <input class="mb-3" name="template" type="file">
                         @else
