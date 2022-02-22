@@ -44,7 +44,7 @@ class CreatorAreaController extends Controller
     {
         $isGroup = $request->has('t') && $request->t == 'group';
         $price = config('site.group_creation_price');
-        $title = (!$isGroup) ? 'Create Item' : 'Create Space';
+        $title = (!$isGroup) ? 'Create Item' : 'Create Group';
 
         if ($request->has('gid')) {
             $group = Group::where([
@@ -88,7 +88,7 @@ class CreatorAreaController extends Controller
             ]);
 
             if (Auth::user()->currency < $price)
-                return back()->withErrors(["You need at least {$price} currency to create a space."]);
+                return back()->withErrors(["You need at least {$price} currency to create a group."]);
 
             if (Auth::user()->reachedGroupLimit())
                 return back()->withErrors(['You have reached the limit of spaces you can be apart of.']);
@@ -132,7 +132,7 @@ class CreatorAreaController extends Controller
 
             Storage::put("thumbnails/{$filename}.png", Image::make($logo)->encode('png'));
 
-            return redirect()->route('groups.view', [$group->id, $group->slug()])->with('success_message', 'Space has been created.');
+            return redirect()->route('groups.view', [$group->id, $group->slug()])->with('success_message', 'Group has been created.');
         } else {
             if (!in_array($request->type, ['shirt', 'pants'])) abort(404);
 
