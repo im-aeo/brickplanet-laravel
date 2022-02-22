@@ -19,7 +19,7 @@ git clone https://github.com/FoxxoSnoot/laravel-roblox-clone.git
 First make sure that you install [Composer](https://getcomposer.org/download/) inside of the project folder, after you did that run these commands:
 ```
 composer install
-cp .env.example .env
+cp .env.example .env (copy .env.example .env for Windows)
 php artisan key:generate
 ```
 
@@ -31,12 +31,18 @@ Then make sure to enter your project name, provide your Recaptcha keys, email in
 
 Also be sure to specify these domains in the `config/site.php` file as well or your site won't work!
 
-After you set up the database run the following command:
+After you set up the database run the following command. This will insert all the necessary SQL tables in your database:
 ```
 php artisan migrate
 ```
 
 If you setup everything correctly your site should now be working. If you sign up, the first user will immediately gain admin panel permissions and the panel password for it will be `password`, so make sure to change this or else anybody can mess with your site if they know the admin panel url!
+
+(Optional step) Run the following command to run the application on the PHP development server:
+
+```
+php artisan serve
+```
 
 ## 3. Setting up background workers for email and automatic rerendering
 Run the following command:
